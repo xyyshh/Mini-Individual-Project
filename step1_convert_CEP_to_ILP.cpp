@@ -17,7 +17,7 @@ int main(){
 	char outfilename[12] = {'I','L','P','/','0','0','1','.','t','x','t',0};
 	
 	for(int file = 1; file <= 20; file++) {
-		memset(g, 0, sizeof(g));
+		memset(g, -1, sizeof(g));
 		memset(edge, 0, sizeof(edge));
 		memset(a, 0, sizeof(a));
 		con_num = 0;
@@ -50,19 +50,31 @@ int main(){
 			for(int i = 1; i <= edge[x][0]; i++)
 				for(int j = i+1; j <= edge[x][0]; j++) {
 					int y = edge[x][i], z = edge[x][j];
-					if(g[y][z] == 0) {
+					if(g[y][z] == -1) {
 						conflict[++con_num][0] = a[x][y];
 						conflict[con_num][1] = a[x][z];
 						conflict[con_num][2] = a[y][z];
 					}
 				}
 		}
-		fprintf(outfile, "%d %d\n", cnt, con_num);
+		fprintf(outfile, "%d %d %d\n", n, cnt, con_num);
 		for(int i = 1; i <= n; i++)
 			for(int j = i+1; j <= n; j++)
-				fprintf(outfile, "%d ", g[i][j]);
+				fprintf(outfile, "%d ", -g[i][j]);
+		fprintf(outfile, "\n");
 		for(int i = 1; i <= con_num; i++)
 			fprintf(outfile, "%d %d %d\n", conflict[i][0], conflict[i][1], conflict[i][2]);
+		for(int i=1;i<=n;i++){
+			for(int j=1;j<=n;j++)
+				fprintf(outfile, "%d ", -g[i][j]);
+			fprintf(outfile, "\n");
+		}
+		fprintf(outfile, "\n");
+		for(int i=1;i<=n;i++) {
+			for(int j=1;j<=n;j++)
+				fprintf(outfile, "%d ", a[i][j]);
+			fprintf(outfile,"\n");
+		}
 	}
 	return 0;
 } 
