@@ -1,4 +1,3 @@
-#include<cstdio>
 #include<cstdlib>
 #include<cstring>
 #include<iostream>
@@ -16,7 +15,7 @@ int main(){
 	char infilename[18] = {'e','x','a','c','t','/','e','x','a','c','t','0','0','1','.','g','r',0};
 	char outfilename[12] = {'I','L','P','/','0','0','1','.','t','x','t',0};
 	
-	for(int file = 1; file <= 20; file++) {
+	for(int file = 1; file <= 200; file++) {
 		memset(g, -1, sizeof(g));
 		memset(edge, 0, sizeof(edge));
 		memset(a, 0, sizeof(a));
@@ -30,7 +29,6 @@ int main(){
 		int n, m;
 		fscanf(infile, "%s", c);
 		fscanf(infile, "%s", c);
-		printf("%s\n", infilename);
 		fscanf(infile, "%s", c);	n = atoi(c);
 		fscanf(infile, "%s", c);	m = atoi(c);
 		for(int i = 1; i <= m; i++) {

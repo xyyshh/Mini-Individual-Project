@@ -2,7 +2,7 @@ filename1 = 'ILP/';
 filename2 = '.txt';
 outfilename1 = 'ILP_ans/';
 
-for file = 1:20
+for file = 1:200
     % open the file
     bai = int2str(idivide(file,int32(100)));
     shi = int2str(idivide(mod(file,100),int32(10)));

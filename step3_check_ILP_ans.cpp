@@ -14,13 +14,12 @@ int main(){
 	char infilename[16] = {'I','L','P','_','a','n','s','/','0','0','1','.','t','x','t',0};
 	char outfilename[15] = {'r','e','s','u','l','t','/','0','0','1','.','t','x','t',0};
 	
-	for(int file = 1; file <= 20; file++) {
+	for(int file = 1; file <= 200; file++) {
 		memset(a, 0, sizeof(a));
 		memset(g, 0, sizeof(g));
 		infilename[8] = outfilename[7] = '0' + (file / 100);
 		infilename[9] = outfilename[8] = '0' + (file % 100 / 10);
 		infilename[10] = outfilename[9] = '0' + (file % 10);
-		printf("%s %s\n", infilename, outfilename);
 		infile = fopen(infilename, "r");
 		outfile = fopen(outfilename, "w");
 		char c[10];
@@ -41,6 +40,7 @@ int main(){
 		}
 		for(int i = 1; i <= n; i++)
 			g[i][i] = 1;
+		fprintf(outfile, "%d\n", n);
 		for(int i = 1; i <= n; i++) {
 			for(int j = 1; j <= n; j++)
 				fprintf(outfile, "%d ", g[i][j]);
